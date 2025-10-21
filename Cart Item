@@ -1,0 +1,29 @@
+
+menu = {"pizza": 5,
+        "chips": 2.25,
+        "popcorn": 6.01,
+        "chocolate": 2.35,
+        "coffe": 5,
+        "soda": 3.3,
+        "water": 2.5}
+
+cart=[]
+total = 0
+print("----------MENU----------")
+for item,value in menu.items():
+    print(f"{item:10}: ${value:.2f}")
+print("------------------------")
+
+while True:
+    food = input("Select the Food item you want (q to quit): ").lower()
+    if food == "q":
+        break
+    elif menu.get(food) is not None:
+        cart.append(food)
+print("----------CART----------")
+for food in cart:
+    # print(menu.get(food))
+    total += menu.get(food)
+    print(food , end=" ")
+print()
+print (f"The total Bill is : ${total}")
