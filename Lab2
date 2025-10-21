@@ -1,0 +1,77 @@
+2)Program on Data Transformation: String Manipulation, Regular Expressions
+
+1  import pandas as pd
+2  import re
+3  
+4  # String Manipulation
+5  print("String Manipulation")
+6  print("-------------------")
+7  
+8  # Create a sample dataset
+9  dataset = pd.DataFrame({
+10     'Name': ['John Smith', 'Mary Johnson', 'David Lee'],
+11     'Address': ['123 Main St', '456 Elm St', '789 Oak St']
+12 })
+13 
+14 print("Original Dataset:")
+15 print(dataset)
+16 
+17 # Lowercase strings
+18 dataset['Name'] = dataset['Name'].str.lower()
+19 dataset['Address'] = dataset['Address'].str.lower()
+20 
+21 print("\nLowercase Strings:")
+22 print(dataset)
+23 
+24 # Uppercase strings
+25 dataset['Name'] = dataset['Name'].str.upper()
+26 dataset['Address'] = dataset['Address'].str.upper()
+27 
+28 print("\nUppercase Strings:")
+29 print(dataset)
+30 
+31 # Strip whitespace
+32 dataset['Name'] = dataset['Name'].str.strip()
+33 dataset['Address'] = dataset['Address'].str.strip()
+34 
+35 print("\nStrip Whitespace:")
+36 print(dataset)
+37 
+38 # Replace strings
+39 dataset['Name'] = dataset['Name'].str.replace('John', 'Jonathan')
+40 dataset['Address'] = dataset['Address'].str.replace('St', 'Street')
+41 
+42 print("\nReplace Strings:")
+43 print(dataset)
+44 
+45 # Regular Expressions
+46 print("\nRegular Expressions")
+47 print("-------------------")
+48 
+49 # Create a sample dataset
+50 dataset = pd.DataFrame({
+51     'Email': ['john@example.com', 'mary@example.org', 'david@example.net'],
+52     'Phone': ['123-456-7890', '098-765-4321', '555-123-4567']
+53 })
+54 
+55 print("Original Dataset:")
+56 print(dataset)
+57 
+58 # Extract domain from email using regular expression
+59 dataset['Domain'] = dataset['Email'].str.extract(r'@(.*)', expand=False)
+60 
+61 print("\nExtract Domain:")
+62 print(dataset)
+63 
+64 # Validate phone number using regular expression
+65 dataset['Valid Phone'] = dataset['Phone'].str.contains(r'^\d{3}-\d{3}-\d{4}$', regex=True)
+66 
+67 print("\nValidate Phone Number:")
+68 print(dataset)
+69 
+70 # Extract numbers from phone number using regular expression
+71 dataset[['Area Code', 'Prefix', 'Line Number']] = dataset['Phone'].str.extract(r'(\d{3})-(\d{3})-(\d{4})')
+72 
+73 print("\nExtract Phone Numbers:")
+74 print(dataset) 
+ 
