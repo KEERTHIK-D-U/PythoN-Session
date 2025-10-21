@@ -1,0 +1,72 @@
+1)Program on data wrangling: Combining and merging datasets, Reshaping and Pivoting 
+
+1  import pandas as pd
+2  
+3  # Combining and Merging Datasets
+4  print("Combining and Merging Datasets")
+5  print("-------------------------------")
+6  
+7  # Create two sample datasets
+8  dataset1 = pd.DataFrame({
+9      'Name': ['John', 'Mary', 'David'],
+10     'Age': [25, 31, 42]
+11 })
+12 
+13 dataset2 = pd.DataFrame({
+14     'Name': ['Emily', 'Michael', 'Sarah'],
+15     'Age': [28, 35, 38]
+16 })
+17 
+18 # Concatenate the datasets
+19 combined_dataset = pd.concat([dataset1, dataset2])
+20 
+21 print("Concatenated Dataset:")
+22 print(combined_dataset)
+23 
+24 # Create two sample datasets for merging
+25 dataset1 = pd.DataFrame({
+26     'ID': [1, 2, 3],
+27     'Name': ['John', 'Mary', 'David']
+28 })
+29 
+30 dataset2 = pd.DataFrame({
+31     'ID': [1, 2, 3],
+32     'Age': [25, 31, 42]
+33 })
+34 
+35 # Merge the datasets
+36 merged_dataset = pd.merge(dataset1, dataset2, on='ID')
+37 
+38 print("\nMerged Dataset:")
+39 print(merged_dataset)
+40 
+41 # Reshaping and Pivoting
+42 print("\nReshaping and Pivoting")
+43 print("-------------------------------")
+44
+45 # Create a sample dataset for reshaping
+46 dataset = pd.DataFrame({
+47     'ID': [1, 1, 2, 2],
+48     'Year': [2018, 2019, 2018, 2019],
+49     'Sales': [100, 120, 80, 90]
+50 })
+51 
+52 # Reshape the dataset
+53 reshaped_dataset = pd.pivot_table(dataset, values='Sales', index='ID', columns='Year')
+54 
+55 print("Reshaped Dataset:")
+56 print(reshaped_dataset)
+57 
+58 # Create a sample dataset for pivoting
+59 dataset = pd.DataFrame({
+60     'ID': [1, 2],
+61     '2018': [100, 80],
+62     '2019': [120, 90]
+63 })
+64 
+65 # Pivot the dataset
+66 pivoted_dataset = pd.melt(dataset, id_vars='ID', value_vars=['2018', '2019'], 
+67                           var_name='Year', value_name='Sales')
+68 
+69 print("\nPivoted Dataset:")
+70 print(pivoted_dataset) 
